@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.vet;
 
+import java.util.Collection;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,8 @@ class VetController {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for Object-Xml mapping
         Vets vets = new Vets();
-        vets.getVetList().addAll(this.vets.findAll());
+        Collection<Vet> vetsCollection = this.vets.findAll();
+        vets.getVetList().addAll(vetsCollection);
         model.put("vets", vets);
         return "vets/vetList";
     }

@@ -42,7 +42,9 @@ class OwnerController {
 
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
     private final OwnerRepository owners;
-
+    
+    @Autowired
+    private OwnerService ownerService;
 
     @Autowired
     public OwnerController(OwnerRepository clinicService) {
@@ -129,7 +131,8 @@ class OwnerController {
     @RequestMapping("/owners/{ownerId}")
     public ModelAndView showOwner(@PathVariable("ownerId") int ownerId) {
         ModelAndView mav = new ModelAndView("owners/ownerDetails");
-        mav.addObject(this.owners.findById(ownerId));
+        //mav.addObject(this.owners.findById(ownerId));
+        mav.addObject(this.ownerService.findById(ownerId));
         return mav;
     }
 
