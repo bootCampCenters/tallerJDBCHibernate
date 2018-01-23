@@ -27,6 +27,24 @@ public class JDBCApplication {
 			if (connection != null)
 				System.out.println("Conexión establecida");
 			
+			
+			// -- Ejemplo ejecución de consulta a través de JDBC -- //
+		      statement = connection.createStatement(); 
+		      String sql = "SELECT * FROM vets"; 
+		      ResultSet rs = statement.executeQuery(sql); 
+		      while(rs.next()){ 
+		             int id = rs.getInt("id"); 
+		             String firstName = rs.getString("first_name"); 
+		             String lastName = rs.getString("last_name"); 
+		 
+		             System.out.print("Id: " + id); 
+		             System.out.print(", Nombre: " + firstName); 
+		             System.out.println(", Apellidos: " + lastName); 
+		      } 
+		        rs.close(); 
+		        
+		     // -- Fin de ejemplo ejecución de consulta -- //   
+			
 		    
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");

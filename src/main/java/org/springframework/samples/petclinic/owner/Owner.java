@@ -32,6 +32,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
+import org.springframework.samples.petclinic.bill.Bill;
 import org.springframework.samples.petclinic.model.Person;
 
 /**
@@ -60,6 +61,22 @@ public class Owner extends Person {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets;
+    
+    
+    // ------ Incluimos la relación con la tabla de facturas ------ //
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    private Set<Bill> bills;
+    
+    public Set<Bill> getBills() {
+	return bills;
+    }
+
+    public void setBills(Set<Bill> bills) {
+	this.bills = bills;
+    }
+    // ------- Fin de la inclusión ---------- //
+
+
 
 
     public String getAddress() {
