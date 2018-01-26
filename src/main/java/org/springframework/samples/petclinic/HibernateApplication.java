@@ -39,7 +39,7 @@ import org.springframework.samples.petclinic.visit.VisitRepository;
  * @author Dave Syer
  *
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class HibernateApplication implements CommandLineRunner {
 	
 	@Autowired

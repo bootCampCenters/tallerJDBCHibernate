@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,6 +25,9 @@ import org.springframework.samples.petclinic.visit.Visit;
 
 @Entity
 @Table(name="facturas")
+@NamedQueries({
+@NamedQuery(name="billByIdNumber", query="select b from Bill b where b.idNumber=:idNumber")
+})
 public class Bill extends BaseEntity {
 
 	
